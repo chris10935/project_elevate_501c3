@@ -75,29 +75,166 @@
     });
   });
 
-  // ===================== INTERSECTION OBSERVER (VALUE CARDS) =====================
-  const valueCards = document.querySelectorAll('.value-card');
+  // ===================== FLIP CARDS (click / keyboard for touch & accessibility) =====================
+  document.querySelectorAll('.flip-card').forEach(function (card) {
+    card.addEventListener('click', function () {
+      card.classList.toggle('flipped');
+    });
+    card.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        card.classList.toggle('flipped');
+      }
+    });
+  });
 
-  if ('IntersectionObserver' in window) {
-    const observer = new IntersectionObserver(function (entries) {
+  // ===================== HIGHLIGHT CARDS BOUNCE ON SCROLL =====================
+  const highlightItems = document.querySelectorAll('.highlight-item');
+
+  if ('IntersectionObserver' in window && highlightItems.length) {
+    const highlightObserver = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
-          const delay = parseInt(entry.target.getAttribute('data-delay') || '0', 10);
+          const index = Array.prototype.indexOf.call(highlightItems, entry.target);
           setTimeout(function () {
-            entry.target.classList.add('visible');
-          }, delay);
-          observer.unobserve(entry.target);
+            entry.target.classList.add('bounce-in');
+          }, index * 120);
+          highlightObserver.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.15 });
+    }, { threshold: 0.2 });
 
-    valueCards.forEach(function (card) {
-      observer.observe(card);
+    highlightItems.forEach(function (item) {
+      highlightObserver.observe(item);
     });
   } else {
-    // Fallback: show all cards if IntersectionObserver is not supported
-    valueCards.forEach(function (card) { card.classList.add('visible'); });
+    highlightItems.forEach(function (item) { item.classList.add('bounce-in'); });
   }
+
+  // ===================== VALUES CAROUSEL =====================
+  (function () {
+    var carousel = document.querySelector('.values-carousel');
+    var track = document.querySelector('.values-track');
+    if (!carousel || !track) return;
+
+    var GAP = 28;
+    var currentIndex = 0;
+    var autoTimer = null;
+
+    // Clone all cards and append to create seamless loop
+    var origCards = Array.from(track.children);
+    origCards.forEach(function (card) {
+      var clone = card.cloneNode(true);
+      clone.setAttribute('aria-hidden', 'true');
+      track.appendChild(clone);
+    });
+
+    var allCards = Array.from(track.children);
+
+    function getVisibleCount() {
+      return window.innerWidth > 768 ? 3 : 1;
+    }
+
+    function updateCardWidths() {
+      var visibleCount = getVisibleCount();
+      var containerWidth = carousel.offsetWidth;
+      var cardWidth = (containerWidth - GAP * (visibleCount - 1)) / visibleCount;
+      allCards.forEach(function (card) {
+        card.style.width = cardWidth + 'px';
+      });
+    }
+
+    function getStepPx() {
+      return allCards[0] ? allCards[0].offsetWidth + GAP : 0;
+    }
+
+    function goTo(index, animate) {
+      if (animate === false) {
+        track.style.transition = 'none';
+      } else {
+        track.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+      }
+      currentIndex = index;
+      track.style.transform = 'translateX(-' + (currentIndex * getStepPx()) + 'px)';
+    }
+
+    // After each transition, if we're into the clone zone, silently reset to original
+    track.addEventListener('transitionend', function () {
+      if (currentIndex >= origCards.length) {
+        goTo(currentIndex - origCards.length, false);
+      }
+    });
+
+    function advance() {
+      goTo(currentIndex + 1, true);
+    }
+
+    function startAuto() {
+      autoTimer = setInterval(advance, 2500);
+    }
+
+    function resetAuto() {
+      clearInterval(autoTimer);
+      startAuto();
+    }
+
+    document.querySelector('.carousel-btn-prev').addEventListener('click', function () {
+      // Going left: if at 0, jump silently to clone zone then animate back
+      if (currentIndex <= 0) {
+        goTo(origCards.length, false);
+        requestAnimationFrame(function () {
+          requestAnimationFrame(function () { goTo(origCards.length - 1, true); });
+        });
+      } else {
+        goTo(currentIndex - 1, true);
+      }
+      resetAuto();
+    });
+
+    document.querySelector('.carousel-btn-next').addEventListener('click', function () {
+      advance();
+      resetAuto();
+    });
+
+    window.addEventListener('resize', function () {
+      updateCardWidths();
+      goTo(currentIndex, false);
+    });
+
+    updateCardWidths();
+    startAuto();
+  })();
+
+  // ===================== ABOUT SLIDESHOW =====================
+  (function () {
+    var track = document.querySelector('.slideshow-track');
+    var dotsContainer = document.querySelector('.slideshow-dots');
+    if (!track || !dotsContainer) return;
+
+    var slides = Array.from(track.querySelectorAll('.slide'));
+    var total = slides.length;
+    var current = 0;
+
+    slides.forEach(function (_, i) {
+      var dot = document.createElement('button');
+      dot.className = 'slideshow-dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', 'Slide ' + (i + 1));
+      dot.addEventListener('click', function () { goTo(i); });
+      dotsContainer.appendChild(dot);
+    });
+
+    var dots = Array.from(dotsContainer.querySelectorAll('.slideshow-dot'));
+
+    function goTo(index) {
+      current = (index + total) % total;
+      track.style.transform = 'translateX(-' + (current * 100) + '%)';
+      dots.forEach(function (d, i) {
+        d.classList.toggle('active', i === current);
+      });
+    }
+
+    setInterval(function () { goTo(current + 1); }, 3500);
+  })();
 
   // ===================== STATS COUNTER =====================
   const statNumbers = document.querySelectorAll('.stat-number[data-target]');

@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Project Elevate is a nonprofit dedicated to empowering individuals and communities through mentorship, resources, and opportunities." />
   <title>Project Elevate | Rise. Grow. Lead.</title>
+  <link rel="icon" type="image/png" href="https://img.icons8.com/?size=100&id=sPsNNQZhuNWZ&format=png&color=000000" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -84,14 +85,15 @@
     <div class="container">
       <div class="about-grid">
         <div class="about-visual">
-          <div class="about-graphic">
-            <div class="graphic-triangle graphic-1">&#9651;</div>
-            <div class="graphic-triangle graphic-2">&#9651;</div>
-            <div class="graphic-triangle graphic-3">&#9651;</div>
-            <div class="graphic-center-text">
-              <span class="graphic-year">Est. 2024</span>
-              <span class="graphic-name">Project Elevate</span>
+          <div class="about-slideshow">
+            <div class="slideshow-track">
+              <img class="slide" src="https://images.pexels.com/photos/1006112/pexels-photo-1006112.jpeg" alt="Community slide 1" />
+              <img class="slide" src="https://images.pexels.com/photos/3321789/pexels-photo-3321789.jpeg" alt="Community slide 2" />
+              <img class="slide" src="https://images.pexels.com/photos/1072824/pexels-photo-1072824.jpeg" alt="Community slide 3" />
+              <img class="slide" src="https://images.pexels.com/photos/5212318/pexels-photo-5212318.jpeg" alt="Community slide 4" />
+              <img class="slide" src="https://images.pexels.com/photos/5082870/pexels-photo-5082870.jpeg" alt="Community slide 5" />
             </div>
+            <div class="slideshow-dots"></div>
           </div>
         </div>
         <div class="about-content">
@@ -105,19 +107,19 @@
           </p>
           <div class="about-highlights">
             <div class="highlight-item">
-              <div class="highlight-icon">&#127891;</div>
+              <div class="highlight-icon"><img src="https://img.icons8.com/?size=100&id=sPsNNQZhuNWZ&format=png&color=000000" alt="Youth Mentorship" style="width:28px;height:28px;object-fit:contain;" /></div>
               <span>Youth Mentorship</span>
             </div>
             <div class="highlight-item">
-              <div class="highlight-icon">&#128170;</div>
+              <div class="highlight-icon"><img src="https://img.icons8.com/?size=100&id=0DjbFURK3pNs&format=png&color=000000" alt="Leadership Development" style="width:28px;height:28px;object-fit:contain;" /></div>
               <span>Leadership Development</span>
             </div>
             <div class="highlight-item">
-              <div class="highlight-icon">&#127968;</div>
+              <div class="highlight-icon"><img src="https://img.icons8.com/?size=100&id=PnGqCiGjfpSQ&format=png&color=000000" alt="Community Outreach" style="width:28px;height:28px;object-fit:contain;" /></div>
               <span>Community Outreach</span>
             </div>
             <div class="highlight-item">
-              <div class="highlight-icon">&#128188;</div>
+              <div class="highlight-icon"><img src="https://img.icons8.com/?size=100&id=uALMLsbaibyy&format=png&color=000000" alt="Workforce Readiness" style="width:28px;height:28px;object-fit:contain;" /></div>
               <span>Workforce Readiness</span>
             </div>
           </div>
@@ -130,23 +132,46 @@
   <section class="section mission-section" id="mission">
     <div class="container">
       <div class="mv-grid">
-        <div class="mv-card mission-card">
-          <div class="mv-icon">&#127919;</div>
-          <h3 class="mv-label">Our Mission</h3>
-          <p class="mv-text">
-            Project Elevate empowers individuals and communities by providing resources, mentorship, and opportunities that help people rise to their highest potential.
-          </p>
+
+        <!-- Mission Flip Card -->
+        <div class="flip-card" tabindex="0" aria-label="Our Mission - hover or press to reveal">
+          <div class="flip-card-inner">
+            <div class="flip-card-front mv-card">
+              <div class="mv-icon"><img src="https://img.icons8.com/?size=100&id=64000&format=png&color=000000" alt="Our Mission"/></div>
+              <h3 class="mv-label">Our Mission</h3>
+            </div>
+            <div class="flip-card-back mv-card">
+              <div class="mv-icon"><img src="https://img.icons8.com/?size=100&id=64000&format=png&color=000000" alt="Our Mission"/></div>
+              <h3 class="mv-label">Our Mission</h3>
+              <p class="mv-text">
+                Project Elevate empowers individuals and communities by providing resources, mentorship, and opportunities that help people rise to their highest potential.
+              </p>
+            </div>
+          </div>
         </div>
+
         <div class="mv-divider">
           <div class="mv-triangle">&#9651;</div>
         </div>
-        <div class="mv-card vision-card">
-          <div class="mv-icon">&#128065;</div>
-          <h3 class="mv-label">Our Vision</h3>
-          <p class="mv-text">
-            To build stronger communities by elevating the potential of youth, families, and individuals through education, leadership development, and opportunity.
-          </p>
+
+        <!-- Vision Flip Card -->
+        <div class="flip-card" tabindex="0" aria-label="Our Vision - hover or press to reveal">
+          <div class="flip-card-inner">
+            <div class="flip-card-front mv-card">
+              <div class="mv-icon"><img src="https://img.icons8.com/?size=100&id=j53TKrAl0C6U&format=png&color=000000" alt="Our Vision"/></div>
+              <h3 class="mv-label">Our Vision</h3>
+              
+            </div>
+            <div class="flip-card-back mv-card">
+              <div class="mv-icon"><img src="https://img.icons8.com/?size=100&id=j53TKrAl0C6U&format=png&color=000000" alt="Our Vision"/></div>
+              <h3 class="mv-label">Our Vision</h3>
+              <p class="mv-text">
+                To build stronger communities by elevating the potential of youth, families, and individuals through education, leadership development, and opportunity.
+              </p>
+            </div>
+          </div>
         </div>
+
       </div>
     </div>
   </section>
@@ -159,49 +184,55 @@
         <h2 class="section-title">Our Core Values</h2>
         <p class="section-subtitle">The principles that guide everything we do at Project Elevate.</p>
       </div>
-      <div class="values-grid">
-        <div class="value-card" data-delay="0">
-          <div class="value-icon-wrap">
-            <span class="value-icon">&#9651;</span>
+      <div class="values-carousel-wrapper">
+        <button class="carousel-btn carousel-btn-prev" aria-label="Previous value">&#8592;</button>
+        <div class="values-carousel">
+          <div class="values-track">
+            <div class="value-card">
+              <div class="value-icon-wrap">
+                <span class="value-icon"><img src="https://img.icons8.com/?size=100&id=1QNLYHY629Ye&format=png&color=000000" alt="Empowerment"/></span>
+              </div>
+              <h3 class="value-title">Empowerment</h3>
+              <p class="value-desc">Helping individuals realize their full potential and take ownership of their future.</p>
+            </div>
+            <div class="value-card">
+              <div class="value-icon-wrap">
+                <span class="value-icon"><img src="https://img.icons8.com/?size=100&id=UFAf2Mefrun3&format=png&color=000000" alt="Opportunity"/></span>
+              </div>
+              <h3 class="value-title">Opportunity</h3>
+              <p class="value-desc">Creating access to resources and pathways for growth for everyone in our community.</p>
+            </div>
+            <div class="value-card">
+              <div class="value-icon-wrap">
+                <span class="value-icon"><img src="https://img.icons8.com/?size=100&id=PnGqCiGjfpSQ&format=png&color=000000" alt="Community"/></span>
+              </div>
+              <h3 class="value-title">Community</h3>
+              <p class="value-desc">Building stronger communities together through collaboration and shared purpose.</p>
+            </div>
+            <div class="value-card">
+              <div class="value-icon-wrap">
+                <span class="value-icon"><img src="https://img.icons8.com/?size=100&id=kuU7I7uPlHfo&format=png&color=000000" alt="Leadership"/></span>
+              </div>
+              <h3 class="value-title">Leadership</h3>
+              <p class="value-desc">Developing the next generation of confident, capable, and compassionate leaders.</p>
+            </div>
+            <div class="value-card">
+              <div class="value-icon-wrap">
+                <span class="value-icon"><img src="https://img.icons8.com/?size=100&id=efas6HKTLjXl&format=png&color=000000" alt="Scholarship"/></span>
+              </div>
+              <h3 class="value-title">Scholarship</h3>
+              <p class="value-desc">Creating access to higher education and academic excellence for those who need it most.</p>
+            </div>
+            <div class="value-card">
+              <div class="value-icon-wrap">
+                <span class="value-icon"><img src="https://img.icons8.com/?size=100&id=12208&format=png&color=000000" alt="Integrity"/></span>
+              </div>
+              <h3 class="value-title">Integrity</h3>
+              <p class="value-desc">Operating with honesty, transparency, and unwavering commitment to our community's trust.</p>
+            </div>
           </div>
-          <h3 class="value-title">Empowerment</h3>
-          <p class="value-desc">Helping individuals realize their full potential and take ownership of their future.</p>
         </div>
-        <div class="value-card" data-delay="100">
-          <div class="value-icon-wrap">
-            <span class="value-icon">&#128273;</span>
-          </div>
-          <h3 class="value-title">Opportunity</h3>
-          <p class="value-desc">Creating access to resources and pathways for growth for everyone in our community.</p>
-        </div>
-        <div class="value-card" data-delay="200">
-          <div class="value-icon-wrap">
-            <span class="value-icon">&#127968;</span>
-          </div>
-          <h3 class="value-title">Community</h3>
-          <p class="value-desc">Building stronger communities together through collaboration and shared purpose.</p>
-        </div>
-        <div class="value-card" data-delay="300">
-          <div class="value-icon-wrap">
-            <span class="value-icon">&#11088;</span>
-          </div>
-          <h3 class="value-title">Leadership</h3>
-          <p class="value-desc">Developing the next generation of confident, capable, and compassionate leaders.</p>
-        </div>
-        <div class="value-card" data-delay="400">
-          <div class="value-icon-wrap">
-            <span class="value-icon">&#127891;</span>
-          </div>
-          <h3 class="value-title">Scholarship</h3>
-          <p class="value-desc">Creating access to higher education and academic excellence for those who need it most.</p>
-        </div>
-        <div class="value-card" data-delay="500">
-          <div class="value-icon-wrap">
-            <span class="value-icon">&#9878;</span>
-          </div>
-          <h3 class="value-title">Integrity</h3>
-          <p class="value-desc">Operating with honesty, transparency, and unwavering commitment to our community's trust.</p>
-        </div>
+        <button class="carousel-btn carousel-btn-next" aria-label="Next value">&#8594;</button>
       </div>
     </div>
   </section>
