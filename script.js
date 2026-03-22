@@ -7,7 +7,6 @@
 
   // ===================== NAVBAR SCROLL =====================
   const navbar = document.getElementById('navbar');
-  const backToTop = document.getElementById('backToTop');
 
   window.addEventListener('scroll', function () {
     const scrollY = window.scrollY;
@@ -16,12 +15,6 @@
       navbar.classList.add('scrolled');
     } else {
       navbar.classList.remove('scrolled');
-    }
-
-    if (scrollY > 400) {
-      backToTop.classList.add('visible');
-    } else {
-      backToTop.classList.remove('visible');
     }
   }, { passive: true });
 
@@ -53,11 +46,6 @@
       navToggle.setAttribute('aria-expanded', 'false');
       document.body.style.overflow = '';
     }
-  });
-
-  // ===================== BACK TO TOP =====================
-  backToTop.addEventListener('click', function () {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
   // ===================== SMOOTH SCROLL =====================
@@ -277,6 +265,27 @@
         }
       }, { threshold: 0.3 });
       statsObserver.observe(statsSection);
+    }
+  }
+
+  // ===================== CONTACT ITEMS SLIDE-IN ANIMATION =====================
+  if ('IntersectionObserver' in window) {
+    const contactItems = document.querySelectorAll('.contact-item');
+    if (contactItems.length) {
+      const contactObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry, index) {
+          if (entry.isIntersecting) {
+            setTimeout(function () {
+              entry.target.classList.add(index % 2 === 0 ? 'slide-in-left' : 'slide-in-right');
+            }, index * 150);
+            contactObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.2 });
+
+      contactItems.forEach(function (item) {
+        contactObserver.observe(item);
+      });
     }
   }
 

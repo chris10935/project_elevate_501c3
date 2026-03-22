@@ -368,7 +368,7 @@
       </div>
       <div class="impact-quote">
         <blockquote>
-          "We believe everyone deserves the opportunity to rise."
+          We believe everyone deserves the opportunity to rise.
         </blockquote>
         <cite>— Project Elevate</cite>
       </div>
@@ -424,34 +424,23 @@
             <li><span class="impact-amount">$500</span> supports one scholarship application cycle</li>
           </ul>
         </div>
-        <div class="donate-form-container">
-          <form class="donate-form" id="donateForm" novalidate>
-            <h3 class="form-title">Make a Donation</h3>
-            <div class="amount-selector">
-              <button type="button" class="amount-btn" data-amount="25">$25</button>
-              <button type="button" class="amount-btn" data-amount="50">$50</button>
-              <button type="button" class="amount-btn active" data-amount="100">$100</button>
-              <button type="button" class="amount-btn" data-amount="250">$250</button>
-              <button type="button" class="amount-btn" data-amount="500">$500</button>
-              <input type="number" class="amount-custom" id="customAmount" placeholder="Custom amount" min="1" />
+        <div class="donate-container">
+          <!-- QR Code Section -->
+          <div class="donate-qr-container">
+            <div class="qr-content">
+              <h3 class="form-title">Quick Donate via QR Code</h3>
+              <p class="qr-instruction">Scan the QR code below with your smartphone camera or PayPal app to donate instantly.</p>
+              <div class="qr-code-wrapper">
+                <img src="paypal_qr_code.JPEG" alt="PayPal QR Code for Project Elevate Donations" class="qr-code-image" />
+              </div>
+              <div class="qr-benefits">
+                <p><strong>✓ Fast & Secure</strong> — Direct PayPal payment processing</p>
+                <p><strong>✓ One Scan</strong> — No forms to fill out</p>
+                <p><strong>✓ Mobile Friendly</strong> — Works on any smartphone</p>
+              </div>
+              <p class="form-disclaimer">Project Elevate is a registered 501(c)(3) organization. Donations are tax-deductible to the extent permitted by law.</p>
             </div>
-            <div class="form-group">
-              <label for="donorName">Full Name</label>
-              <input type="text" id="donorName" placeholder="Your full name" required />
-            </div>
-            <div class="form-group">
-              <label for="donorEmail">Email Address</label>
-              <input type="email" id="donorEmail" placeholder="your@email.com" required />
-            </div>
-            <div class="form-group">
-              <label for="donorMessage">Message (Optional)</label>
-              <textarea id="donorMessage" rows="3" placeholder="Share why you're donating..."></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary btn-full">
-              Donate Now &#9651;
-            </button>
-            <p class="form-disclaimer">Project Elevate is a registered 501(c)(3) organization. Donations are tax-deductible to the extent permitted by law.</p>
-          </form>
+          </div>
         </div>
       </div>
     </div>
@@ -498,8 +487,15 @@
               <span>#ElevateTogether</span>
             </div>
           </div>
+          <div class="contact-image">
+            <img src="https://images.pexels.com/photos/36665540/pexels-photo-36665540.jpeg" alt="Community engagement" />
+          </div>
         </div>
-        <form class="contact-form" id="contactForm" novalidate>
+        <div class="contact-right">
+          <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d26427785.5563629!2d-161.4601768!3d36.0435334!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54eab584e432360b%3A0x1c3bb99243deb742!2sUnited%20States!5e0!3m2!1sen!2sus!4v1774205354807!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+          <form class="contact-form" id="contactForm" novalidate>
           <div class="form-row">
             <div class="form-group">
               <label for="contactName">Full Name</label>
@@ -527,7 +523,8 @@
             <textarea id="contactMessage" rows="5" placeholder="Tell us how we can help or how you'd like to get involved..." required></textarea>
           </div>
           <button type="submit" class="btn btn-primary btn-full">Send Message &#9651;</button>
-        </form>
+          </form>
+        </div>
       </div>
     </div>
   </section>
@@ -586,9 +583,6 @@
       </div>
     </div>
   </footer>
-
-  <!-- ========================= BACK TO TOP ========================= -->
-  <button class="back-to-top" id="backToTop" aria-label="Back to top">&#9651;</button>
 
   <!-- ========================= NOTIFICATION TOAST ========================= -->
   <div class="toast" id="toast"></div>
