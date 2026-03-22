@@ -241,15 +241,18 @@
   let statsAnimated = false;
 
   function animateCounters() {
+    // Optimize animation duration based on device capabilities
+    const isMobile = window.innerWidth <= 768;
+    const duration = isMobile ? 1500 : 1800;
+    
     statNumbers.forEach(function (el) {
       const target = parseInt(el.getAttribute('data-target'), 10);
-      const duration = 1800;
       const startTime = performance.now();
 
       function update(currentTime) {
         const elapsed = currentTime - startTime;
         const progress = Math.min(elapsed / duration, 1);
-        // Ease out cubic
+        // Ease out cubic - smooth deceleration
         const eased = 1 - Math.pow(1 - progress, 3);
         el.textContent = Math.round(eased * target);
         if (progress < 1) {
